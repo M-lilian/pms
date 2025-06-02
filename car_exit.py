@@ -1,7 +1,7 @@
 import cv2
 from ultralytics import YOLO
 import pytesseract
-pytesseract.pytesseract.tesseract_cmd = r'C:\Users\pc\AppData\Local\Programs\Tesseract-OCR\tesseract.exe'
+pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 import os
 import time
 import serial
@@ -11,7 +11,7 @@ from collections import Counter
 import random
 
 # Load YOLOv8 model (same model as entry)
-model = YOLO(r'C:\Users\pc\Downloads\parking-management-system\best.pt')
+model = YOLO(r'best.pt')
 
 # CSV log file
 csv_file = 'plates_log.csv'
@@ -20,7 +20,7 @@ csv_file = 'plates_log.csv'
 def detect_arduino_port():
     ports = list(serial.tools.list_ports.comports())
     for port in ports:
-        if "Arduino" in port.description or "COM9" in port.description or "USB-SERIAL" in port.description:
+        if "Arduino" in port.description or "COM6" in port.description or "USB-SERIAL" in port.description:
             return port.device
     return None
 

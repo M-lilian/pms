@@ -7,8 +7,8 @@ import serial.tools.list_ports
 import csv
 from collections import Counter
 import pytesseract
-pytesseract.pytesseract.tesseract_cmd = r'C:\Users\pc\AppData\Local\Programs\Tesseract-OCR\tesseract.exe'
-model = YOLO(r'C:\Users\pc\Downloads\parking-management-system\best.pt')
+pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+model = YOLO(r'best.pt')
 save_dir = 'plates'
 os.makedirs(save_dir, exist_ok=True)
 csv_file = 'plates_log.csv'
@@ -19,7 +19,7 @@ if not os.path.exists(csv_file):
 def detect_arduino_port():
     ports = list(serial.tools.list_ports.comports())
     for port in ports:
-        if "Arduino" in port.description or "COM9" in port.description or "USB-SERIAL" in port.description:
+        if "Arduino" in port.description or "COM6" in port.description or "USB-SERIAL" in port.description:
             return port.device
     return None
 arduino_port = detect_arduino_port()
@@ -103,3 +103,4 @@ cap.release()
 if arduino:
     arduino.close()
 cv2.destroyAllWindows()
+print("[SYSTEM] Exiting. Goodbye!")

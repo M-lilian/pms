@@ -70,7 +70,7 @@ String readBlockData(byte blockNumber, String label){
     }
 
     // Convert to string
-    String data = "";
+    String data = "";\
     for (uint8_t i = 0; i < 16; i++){
         data += (char)buffer[i];
     }
